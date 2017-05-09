@@ -94,22 +94,26 @@ public class FrequencyCounter {
         return words;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         // Grab test input file:
         String testInput = "", fileName = "tomsawyer.txt";
-        BufferedReader br = null;
-        try {
-            String currentLine;
-            br = new BufferedReader(new FileReader(fileName));
-            while ((currentLine = br.readLine()) != null)
-                testInput += " " + currentLine;
-            br.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+        java.io.File fileIn = new java.io.File(fileName)
+       if(fileIn.exists())
+       {
+           System.out.println("file ready");
+       }
+       else
+       {
+           throw new Exception("The file does not exist! ");
+       }
+       Scanner input = new Scanner(fileIn);
+       while(input.hasNextLine()==true)
+       {
+           line=input.nextLine();
+           testInput = " "+line;
+       }   
         FrequencyCounter frequencyCounter = new FrequencyCounter();
-        List<String> wordsList = frequencyCounter.topWords(testInput, 500);
+        List<String> wordsList = frequencyCounter.topWords(testInput, 100);
 
         System.out.println(wordsList.toString());
     }
