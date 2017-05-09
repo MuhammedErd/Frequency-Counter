@@ -96,7 +96,7 @@ public class FrequencyCounter {
 
     public static void main(String[] args) {
         // Grab test input file:
-        String testInput = "", fileName = "test.txt";
+        String testInput = "", fileName = "tomsawyer.txt";
         BufferedReader br = null;
         try {
             String currentLine;
